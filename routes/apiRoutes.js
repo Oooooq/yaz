@@ -1,16 +1,15 @@
 const express = require('express');
-const request = require('request');
-const proxyConfig = require('../config/proxy');
-
 const router = express.Router();
+const { makeRequest } = require('../config/proxy');
 
-router.get('/external', (req, res) => {
-  request({ url: proxyConfig.target, method: 'GET' }, (error, response, body) => {
-    if (error) {
-      return res.status(500).send('External API request failed');
+router.get('/proxy', async (req, res) => {
+    try {
+        const { url } = req.query;
+        const data = await makeRequest(url);
+        res.send(data);
+    } catch (error) {
+        res.status(500).send({ message: error.message });
     }
-    res.send(body);
-  });
 });
 
 module.exports = router;
