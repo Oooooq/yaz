@@ -2,16 +2,13 @@ const express = require('express');
 const router = express.Router();
 const authenticate = require('../middleware/auth');
 
-router.post('/register', (req, res) => {
-  // Registration logic
+router.get('/', authenticate, (req, res) => {
+  res.send('User route is secure');
 });
 
 router.post('/login', (req, res) => {
-  // Login logic
-});
-
-router.get('/profile', authenticate, (req, res) => {
-  // Profile retrieval logic
+  // Placeholder for login logic
+  res.send('Login successful');
 });
 
 module.exports = router;
