@@ -1,9 +1,9 @@
 const adminAuth = (req, res, next) => {
-  if (req.body.keybind === '=' && req.body.password === 'DEV)$@*') {
-    next();
-  } else {
-    res.status(401).send('Unauthorized');
+  const adminKey = req.headers['admin-key'];
+  if (adminKey !== process.env.ADMIN_KEY) {
+    return res.status(403).send('Unauthorized');
   }
+  next();
 };
 
 module.exports = adminAuth;

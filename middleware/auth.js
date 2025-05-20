@@ -3,10 +3,14 @@ const config = require('../config');
 
 const authenticate = (req, res, next) => {
   const token = req.headers['authorization'];
-  if (!token) return res.status(403).send('Access denied.');
+  if (!token) {
+    return res.sendStatus(403);
+  }
   
-  jwt.verify(token, config.API_KEY, (err, user) => {
-    if (err) return res.status(403).send('Invalid token.');
+  jwt.verify(token, config.apiKey, (err, user) => {
+    if (err) {
+      return res.sendStatus(403);
+    }
     req.user = user;
     next();
   });
