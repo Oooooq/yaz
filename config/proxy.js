@@ -1,12 +1,23 @@
-const config = require('./index');
+const axios = require('axios');
 
-const proxyConfig = {
-  target: 'https://api.example.com',
-  changeOrigin: true,
-  onError: (err, req, res) => {
-    console.error('Proxy error:', err);
-    res.status(500).send('Proxy Error');
-  }
+const proxySettings = {
+    retries: 3,
+    timeout: 5000
 };
 
-module.exports = proxyConfig;
+const makeRequest = async (url, method = 'GET', data) => {
+    let attempts = 0;
+    while (attempts < proxySettings.retries) {
+        try {
+            const response = await axios({ url, method, data });
+            return response.data;
+        } catch (error) {
+            attempts++;
+            if (attempts === proxySettings.retries) {
+                throw new Error('Proxy request failed after multiple attempts');
+            }
+        }
+    }
+};
+
+module.exports = { makeRequest };

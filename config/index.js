@@ -2,18 +2,12 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const getConfig = () => {
-  const requiredVars = ['API_KEY', 'DATABASE_URL'];
-  requiredVars.forEach((variable) => {
-    if (!process.env[variable]) {
-      throw new Error(`Missing environment variable: ${variable}`);
-    }
-  });
+const config = {
+    port: process.env.PORT || 3000
 };
 
-getConfig();
+if (!config.port) {
+    throw new Error("PORT is not defined in the environment variables.");
+}
 
-module.exports = {
-  dbUrl: process.env.DATABASE_URL,
-  apiKey: process.env.API_KEY,
-};
+module.exports = config;
