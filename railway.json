@@ -1,17 +1,15 @@
 {
   "build": {
-    "dockerfile": "Dockerfile",
-    "dev": {
-      "buildCommand": "npm install",
-      "startCommand": "npm start"
+    "env": {
+      "NODE_ENV": "production"
     }
   },
-  "deploy": {
-    "onNewDeploy": {
-      "buildCommand": "npm install",
-      "startCommand": "npm start"
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "server.js"
     }
-  },
+  ],
   "env": {
     "PORT": "3000"
   }

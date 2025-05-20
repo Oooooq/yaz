@@ -1,15 +1,22 @@
-# YAZ Project
+# Yaz Proxy
 
-The YAZ project is a server-side application built with Node.js and Express. It is designed to provide a robust platform for handling user authentication and managing admin operations. 
+Yaz is an advanced proxy application designed to provide a smoother user experience and enhanced features over the original Shadownetwork project. This project simplifies proxy requests while offering better management interfaces for users and administrators.
 
 ## Features
 
-- User authentication middleware to secure routes
-- Admin panel access control
-- Proxy settings for external API requests
-- Custom error handling
+- Improved user interface with EJS and optional CSS frameworks (Bootstrap or Tailwind CSS).
+- Advanced logging of requests.
+- Configurable request methods (GET/POST) for better proxy functionalities.
+- Enhanced error handling and user-friendly error messages.
+- Secure session and authentication management.
+- Admin panel for managing users and viewing logs/statistics.
 
-## Setup Instructions
+## Prerequisites
 
-1. **Clone the Repository**
+- Node.js (v14 or higher)
+- npm (Node Package Manager)
+
+## Installation Steps
+
+1. Clone the repository:
    
