@@ -1,21 +1,15 @@
-# Yaz Project
+# YAZ Project
 
-Yaz is a highly advanced proxy website designed to provide a smooth user interface and comprehensive features. This project supports deployment on Railway and includes an accessible admin panel.
+The YAZ project is a server-side application built with Node.js and Express. It is designed to provide a robust platform for handling user authentication and managing admin operations. 
 
 ## Features
 
-- User authentication
-- Proxy services for external APIs
-- Admin panel to manage active sessions
-- Responsive design with a user-friendly interface
+- User authentication middleware to secure routes
+- Admin panel access control
+- Proxy settings for external API requests
+- Custom error handling
 
-## Prerequisites
+## Setup Instructions
 
-- Node.js (version 14 or later)
-- npm (Node Package Manager)
-- Railway Account
-
-## Installation Steps
-
-1. Clone the repository:
+1. **Clone the Repository**
    

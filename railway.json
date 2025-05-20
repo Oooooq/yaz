@@ -1,13 +1,18 @@
 {
   "build": {
-    "ignore": ["README.md"],
-    "command": "npm install"
+    "dockerfile": "Dockerfile",
+    "dev": {
+      "buildCommand": "npm install",
+      "startCommand": "npm start"
+    }
   },
   "deploy": {
-    "auto": true
+    "onNewDeploy": {
+      "buildCommand": "npm install",
+      "startCommand": "npm start"
+    }
   },
-  "environment": {
-    "PORT": "3000",
-    "API_KEY": "DEV)$@8"
+  "env": {
+    "PORT": "3000"
   }
 }

@@ -1,21 +1,20 @@
 {
   "name": "yaz",
   "version": "1.0.0",
-  "description": "A highly advanced proxy website with admin panel features.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "build": "echo 'Building for production...' && exit 0",
-    "test": "echo 'No tests specified' && exit 0"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "express": "^4.17.1",
-    "body-parser": "^1.19.0",
     "dotenv": "^10.0.0",
-    "morgan": "^1.10.0",
-    "http-proxy-middleware": "^1.0.6"
+    "morgan": "^1.10.0"
   },
-  "engines": {
-    "node": ">=14.0.0"
-  }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/yaz.git"
+  },
+  "author": "Your Name",
+  "license": "ISC"
 }
