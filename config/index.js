@@ -1,8 +1,19 @@
-require('dotenv').config();
+const dotenv = require('dotenv');
 
-const config = {
-  PORT: process.env.PORT,
-  API_KEY: process.env.API_KEY
+dotenv.config();
+
+const getConfig = () => {
+  const requiredVars = ['API_KEY', 'DATABASE_URL'];
+  requiredVars.forEach((variable) => {
+    if (!process.env[variable]) {
+      throw new Error(`Missing environment variable: ${variable}`);
+    }
+  });
 };
 
-module.exports = config;
+getConfig();
+
+module.exports = {
+  dbUrl: process.env.DATABASE_URL,
+  apiKey: process.env.API_KEY,
+};
