@@ -1,21 +1,17 @@
 const express = require('express');
-const morgan = require('morgan');
 const bodyParser = require('body-parser');
-const routes = require('./routes/index');
-const errorHandler = require('./middleware/errorHandler');
+const morgan = require('morgan');
 const config = require('./config');
-
+const indexRoutes = require('./routes/index');
 const app = express();
-const PORT = config.PORT || 3000;
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/api', routes);
+app.use('/', indexRoutes);
 
-app.use(errorHandler);
-
+const PORT = config.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
