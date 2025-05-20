@@ -1,19 +1,10 @@
-const jwt = require('jsonwebtoken');
-const config = require('../config');
+const { session } = require('express-session');
 
-const authenticate = (req, res, next) => {
-  const token = req.headers['authorization'];
-  if (!token) {
-    return res.sendStatus(403);
-  }
-  
-  jwt.verify(token, config.apiKey, (err, user) => {
-    if (err) {
-      return res.sendStatus(403);
+const ensureAuthenticated = (req, res, next) => {
+    if (req.isAuthenticated()) {
+        return next();
     }
-    req.user = user;
-    next();
-  });
+    res.redirect('/login');
 };
 
-module.exports = authenticate;
+module.exports = ensureAuthenticated;

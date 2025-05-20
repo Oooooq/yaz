@@ -1,9 +1,8 @@
 const adminAuth = (req, res, next) => {
-  const adminKey = req.headers['admin-key'];
-  if (adminKey !== process.env.ADMIN_KEY) {
-    return res.status(403).send('Unauthorized');
-  }
-  next();
+    if (req.session.isAdmin) {
+        return next();
+    }
+    res.status(403).send({ message: 'Access denied to this resource.' });
 };
 
 module.exports = adminAuth;
